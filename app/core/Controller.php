@@ -1,5 +1,6 @@
 <?php
 
+//Use controller classes to make a contact between views and models.
 class Controller
 {
     public function model($model){

@@ -1,19 +1,27 @@
 <?php
 
-namespace app\Model;
+require_once '../app/config/Database.php';
 
+//Select Advertisements and related users from database.
 class Advertisement
 {
     private $id;
     private $userid;
     private $title;
+    private $conn;
 
-    public function __construct($id, $userid, $title)
-    {
-        $this->id = $id;
-        $this->userid = $userid;
-        $this->title = $title;
+    public function __construct() {
+        $database = new Database();
+        $this->conn = $database->dbConnection();
     }
+
+    public function getAllAdvertisements()
+    {
+        $stmt = $this->conn->prepare("SELECT title, users.name FROM advertisements INNER JOIN users ON advertisements.userid = users.id");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function getId()
     {
         return $this->id;

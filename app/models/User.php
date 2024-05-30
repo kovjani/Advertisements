@@ -1,17 +1,27 @@
 <?php
 
-namespace app\Model;
+require_once '../app/config/Database.php';
 
+//Select records from users table.
 class User
 {
     private $id;
     private $name;
 
-    public function __construct($id, $name)
-    {
-        $this->id = $id;
-        $this->name = $name;
+    private $conn;
+
+    public function __construct() {
+        $database = new Database();
+        $this->conn = $database->dbConnection();
     }
+
+    public function getAllUsers()
+    {
+        $stmt = $this->conn->prepare("SELECT name FROM users");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function getId()
     {
         return $this->id;
@@ -28,4 +38,5 @@ class User
     {
         $this->name = $name;
     }
+
 }
