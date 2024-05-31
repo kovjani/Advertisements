@@ -1,0 +1,33 @@
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    padding: 1em;
+    margin: 5em;
+    background-color: cornflowerblue;
+    border-radius: 5em;
+}
+a:hover {
+    background-color: royalblue;
+}
+
+table {
+    box-shadow: 0 0 10px #1e1e1e;
+    border-radius: 1em;
+}
+td {
+    padding: 1em;
+}
+th {
+    padding: 1em;
+    padding-bottom: 2em;
+}
+.td_user {
+    text-align: center;
+}
